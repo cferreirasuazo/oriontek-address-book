@@ -1,10 +1,12 @@
-{% extends "address_book/base.html" %}
+{% extends "address_book/index.html" %}
 
-{% block content %}
+{% block main %}
+    <div class="card col-md-6 p-lg-5 mx-auto">
+         <h3>Add address</h3>
     <form method="POST" action="{% url 'address_book:add-address' %}">
         {% csrf_token %}
         {{form.as_p}}
-        <button name="submit">Save address</button>
-        
+        <button class="btn btn-primary" name="submit">Save address</button>
     </form>
-{% endblock content %}
+    </div>
+{% endblock main %}

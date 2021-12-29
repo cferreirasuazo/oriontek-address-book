@@ -1,20 +1,42 @@
-{% extends "address_book/base.html" %}
+{% extends "address_book/index.html" %}
 
 
-{% block content %}
-        <h1>List of addresses</h1>
-        <div class="address-container">
-            {% for address in addresses  %}
-            <div class="card" style="width: 18rem;">
+{% block main %}
+
+<div class="col-md-9 p-lg-8 mx-auto">
+        <h2>Your Addresses</h2>
+        <div class="address-container row">
+              {% if addresses  %}
+                          {% for address in addresses  %}
+            <div class="card m-2" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title">{{address.address1}}</h5>
+                <h5 class="card-title">Address {{address.id}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{% url 'address_book:update-address' address.id %}">Update address</a>
-                <a href="{% url 'address_book:delete-address' address.id %}" class="card-link">delete</a>
+                <p class="card-text m-0">{{address.address1}}</p>
+                <p class="card-text m-0">{{address.address2}}</p>
+                <p class="card-text m-0">{{address.city}}</p>
+                <p class="card-text m-0">{{address.phone_number}}</p>
+                <p class="card-text m-0">{{address.country_province}}</p>
+                <p class="card-text m-0">{{address.zip_code}}</p>
+                <p class="card-text m-0">{{address.country}}</p>
+                <p class="card-text m-0">{{address.details}}</p>
+                <p class="card-text m-0">{{address.}}</p>
+                <div class="card-actions my-2">
+                  <a href="{% url 'address_book:update-address' address.id %}" class="btn btn-primary">Update</a>
+                  <a href="{% url 'address_book:delete-address' address.id %}" class="btn btn-danger">delete</a>
+                </div>
               </div>
             </div>  
             {% endfor %}
+              {% else %}
+                <div class="col-md-5 p-lg-5 mx-auto my-5">
+                  <div class="text-center mx-auto "> <i style="font-size:5em" class="bi bi-box"></i></div>
+                 <p>The current book is empty, add one address below</p>
+                 <a class="text-center" href="/add_address">Add address</a>
+                </div>
+              {% endif %}
         </div>
-{% endblock content %}
+</div>
+
+{% endblock main %}
 

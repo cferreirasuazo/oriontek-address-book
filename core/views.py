@@ -14,7 +14,12 @@ def register(request):
             new_user = form.save()
             authenticated_user = authenticate(username = new_user.username, password=request.POST['password1'])
             login(request, authenticated_user)
-            return  HttpResponseRedirect(reverse('core:index'))
+            return  HttpResponseRedirect(reverse('address_book:show-addresses'))
     
     context = {'form': form}
     return render(request, 'core/register.html',context)
+
+
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('core:login'))

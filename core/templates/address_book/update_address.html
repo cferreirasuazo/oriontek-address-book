@@ -1,10 +1,10 @@
-{% extends "address_book/base.html" %}
+{% extends "address_book/index.html" %}
 
-{% block content %}
-        <h3>Update address<h3>
-        <form method="POST" >
+{% block main %}
+        <h3>Update address</h3>
+        <form method="POST" action="{% url 'address_book:update-address' address.id %}" >
             {% csrf_token %}
             {{form.as_p}}
-            <button name="submit">Update</button>
+            <button class="btn btn-primary" name="submit">Update</button>
         </form>
-{% endblock content %}
+{% endblock main %}
