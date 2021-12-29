@@ -1,0 +1,10 @@
+{% extends "address_book/base.html" %}
+
+{% block content %}
+        <h3>Update address<h3>
+        <form method="POST" >
+            {% csrf_token %}
+            {{form.as_p}}
+            <button name="submit">Update</button>
+        </form>
+{% endblock content %}

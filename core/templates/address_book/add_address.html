@@ -1,0 +1,10 @@
+{% extends "address_book/base.html" %}
+
+{% block content %}
+    <form method="POST" action="{% url 'address_book:add-address' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name="submit">Save address</button>
+        
+    </form>
+{% endblock content %}
